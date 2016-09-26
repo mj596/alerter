@@ -1,0 +1,22 @@
+<html>
+  <head>
+    {% block head %}
+    <title>{% block title %}{% endblock %} - PrEDIction ALERTER</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/css/alerter.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    {% endblock %}
+  </head>
+  <body>
+    <div id="menu">
+      <a href="/index">Home</a>
+      <a href="/showData">show data</a>
+	  <a href="/getData">get data</a>
+	  <a href="/add?level=UWAGA&timestamp=2016-09-28 19:00:00&body=Przykladowy wpis">add sample data</a>
+    </div>
+	<hr>
+    {% block content %}{% endblock %}
+	<hr>
+  </body>
+</html>
