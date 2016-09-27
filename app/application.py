@@ -6,7 +6,7 @@ class Application(Flask):
         Flask.__init__(self, __name__)
 
         self.config['SECRET_KEY'] = 'secret!'
-        self.config['DEBUG'] = False
+        self.config['DEBUG'] = True
 
         self.messages = []        
         self.data = None

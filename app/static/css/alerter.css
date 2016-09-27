@@ -79,13 +79,18 @@ a {
 .message {
 	text-shadow: 1px 1px #ebebe0;
 }
-table, th, td {
+table {
 	width: 50% !important;
-#    border: 1px solid black;
+    #border: 1px solid black;
 	padding: 2px;
 }
 
-.hideable {
+th, td {
+	#border: 1px solid black;
+	padding: 2px;
+}
+
+.tr-message {
 }
 
 .table-header {
@@ -105,4 +110,8 @@ table, th, td {
 
 .message {
 	padding: 4px;
+}
+td.PerformanceCell
+{
+    width: 100px;
 }

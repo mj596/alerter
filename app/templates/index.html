@@ -9,50 +9,72 @@
 <script>
 	function show(type) {
 		var selector = $('.' + type + '-text').parent();
-		selector.siblings().hide();
-		$('#head').show();
-		selector.show();
+		if( selector.length ) {
+			selector.siblings().hide();
+			$('#head').show();
+			selector.show();
+		} else {
+			$('.tr-message:visible').hide();
+		}
 	}
+	
 	function show_all() {
 		var all = $('tr');
 		all.show();
+	}
+	
+	function discard() {
+		var selector = $('.tr-message:visible');
+		selector.each( function( ) {
+			var identifier = $(this).attr( "id" );
+			socket.emit('delete', { "uuid": identifier } );
+			$(this).hide();
+		});
+		socket.emit('message');
 	}
 </script>
 {% endblock %}
 {% block content %}
 	<h1>PrEDIction</h1><br>
 	<h2>ALERTER</h2>
-	
 	<table  align="center">
 		<tr>
-			<td>
+			<!--<td>
 				<form action="add">
-					<input class="btn" type="submit" value="Add Sample">
+					<input class="btn" type="submit" value="Add Sample" style="width:100%">
+					<input type="hidden" name="level" value="INFO" /> 
+					<input type="hidden" name="timestamp" value="{{ timestamp }}" /> 
+					<input type="hidden" name="body" value="Przykładowy komunikat typy INFO" /> 
+				</form>
+			</td>-->
+			<td>
+				<form>
+					<input class="btn" type="button" value="All" onclick="show_all();" style="width:100%">
 				</form>
 			</td>
 			<td>
 				<form>
-					<input class="btn" type="button" value="All" onclick="show_all();">
+					<input class="btn" type="button" value="Info" onclick="show('info');" style="width:100%">
 				</form>
 			</td>
 			<td>
 				<form>
-					<input class="btn" type="button" value="Info" onclick="show('info');">
+					<input class="btn" type="button" value="Warnings" onclick="show('warning');" style="width:100%">
 				</form>
 			</td>
 			<td>
 				<form>
-					<input class="btn" type="button" value="Warnings" onclick="show('warning');">
+					<input class="btn" type="button" value="Errors" onclick="show('error');" style="width:100%">
 				</form>
 			</td>
 			<td>
 				<form>
-					<input class="btn" type="button" value="Other" onclick="show('message');">
+					<input class="btn" type="button" value="Other" onclick="show('message');" style="width:100%">
 				</form>
 			</td>
 			<td>
 				<form>
-					<input class="btn" type="button" value="Errors" onclick="show('error');">
+					<input class="btn" type="button" value="Discard" onclick="discard();" style="width:100%">
 				</form>
 			</td>
 		</tr>

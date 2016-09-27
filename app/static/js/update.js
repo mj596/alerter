@@ -16,7 +16,8 @@ socket.on('message', function() {
 			}
 			//$('#log').append( "<p class=\"" + notification_type + "\" id=" + data[i].uuid + ">" + data[i].level + " | " + data[i].timestamp + " | <b>" + data[i].body + "</b></p>" );
 			//$('#log').append( "<tr class=\"" + notification_type + "\" id=" + data[i].uuid + "><td>" + data[i].level + "</td><td>" + data[i].timestamp + "</td><td>" + data[i].body + "</td><tr>" );
-			$('#log').append( "<tr id=" + data[i].uuid + "><td class=\"" + notification_type + "-text level\">" + data[i].level + "</td><td class=\"timestamp\">" + data[i].timestamp + "</td><td class=\"message\">" + data[i].body + "</td><tr>" );
+			//$('#log').append( "<tr id=" + data[i].uuid + " class=\"tr-message\"><td class=\"" + notification_type + "-text level\">" + data[i].level + "</td><td class=\"timestamp\">" + data[i].timestamp + "</td><td class=\"message\">" + data[i].body + "</td><tr>" );
+			$( "<tr id=" + data[i].uuid + " class=\"tr-message\"><td class=\"" + notification_type + "-text level\">" + data[i].level + "</td><td class=\"timestamp\">" + data[i].timestamp + "</td><td class=\"message\">" + data[i].body + "</td><tr>" ).insertAfter('#head');
 		}
 	});
 });

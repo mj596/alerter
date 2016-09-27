@@ -26,7 +26,7 @@ class LocalData():
 				'uuid': str(uuid.uuid1())[:8],
 				'level': 'INFO',
 				'timestamp': '2016-09-28 13:00:00',
-			'body': 'That is an information'
+				'body': 'That is an information'
 			},
 			{
 				'uuid': str(uuid.uuid1())[:8],
