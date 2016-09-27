@@ -20,9 +20,6 @@ h2 {
 span {
   background: #fd0;
 }
-dev {
-	text-align: center;
-}
 p {
   background: white;
   font-variant: small-caps;
@@ -39,6 +36,26 @@ a {
   text-align: center;
   text-decoration: none;
   color: #3d3d29;
+}
+
+.error-text {
+	color: #ff0000;
+	font-weight: bold;
+}
+
+.warning-text {
+	color: #ffad33;
+	font-weight: bold;
+}
+
+.info-text {
+	color: #009900;
+	font-weight: bold;
+}
+
+.message-text {
+	color: #000000;
+	font-weight: bold;
 }
 
 .error {
@@ -60,6 +77,32 @@ a {
 }
 
 .message {
-	background: white;
 	text-shadow: 1px 1px #ebebe0;
+}
+table, th, td {
+	width: 50% !important;
+#    border: 1px solid black;
+	padding: 2px;
+}
+
+.hideable {
+}
+
+.table-header {
+	font-size: 20px;
+	font-variant: small-caps;
+}
+
+.level {
+	width: 5% !important;
+	padding: 4px;
+}
+
+.timestamp {
+	width: 17% !important;
+	padding: 4px;
+}
+
+.message {
+	padding: 4px;
 }

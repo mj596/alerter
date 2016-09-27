@@ -1,9 +1,12 @@
 $(document).ready(function(){
-	$("#log").delegate("p", "click", function(){
+	$("#log").delegate("tr", "click", function(){
 		//var identifier = event.target.id;
 		var identifier = $(this).attr( "id" );
-		$(this).hide();
-		socket.emit('delete', { "uuid": identifier } );
-		socket.emit('message');
+		if( identifier == "head") {
+		} else {
+			$(this).hide();
+			socket.emit('delete', { "uuid": identifier } );
+			socket.emit('message');
+		}
 	});
 });		

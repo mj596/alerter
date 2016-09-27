@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="static/js/socket.js"></script>
+<script src="static/js/update.js"></script>
+<script src="static/js/hide.js"></script>
+{% endblock %}
+{% block content %}
+	<h1>PrEDIction</h1><br>
+	<h2>ALERTER</h2>
+	<div id="log"></div>
+	<script src="static/js/show_messages.js"></script>
+{% endblock %}

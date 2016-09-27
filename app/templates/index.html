@@ -6,10 +6,60 @@
 <script src="static/js/socket.js"></script>
 <script src="static/js/update.js"></script>
 <script src="static/js/hide.js"></script>
+<script>
+	function show(type) {
+		var selector = $('.' + type + '-text').parent();
+		selector.siblings().hide();
+		$('#head').show();
+		selector.show();
+	}
+	function show_all() {
+		var all = $('tr');
+		all.show();
+	}
+</script>
 {% endblock %}
 {% block content %}
 	<h1>PrEDIction</h1><br>
 	<h2>ALERTER</h2>
-	<div id="log"></div>
+	
+	<table  align="center">
+		<tr>
+			<td>
+				<form action="add">
+					<input class="btn" type="submit" value="Add Sample">
+				</form>
+			</td>
+			<td>
+				<form>
+					<input class="btn" type="button" value="All" onclick="show_all();">
+				</form>
+			</td>
+			<td>
+				<form>
+					<input class="btn" type="button" value="Info" onclick="show('info');">
+				</form>
+			</td>
+			<td>
+				<form>
+					<input class="btn" type="button" value="Warnings" onclick="show('warning');">
+				</form>
+			</td>
+			<td>
+				<form>
+					<input class="btn" type="button" value="Other" onclick="show('message');">
+				</form>
+			</td>
+			<td>
+				<form>
+					<input class="btn" type="button" value="Errors" onclick="show('error');">
+				</form>
+			</td>
+		</tr>
+	</table>
+	
+	<table id="log" align="center" class="table table-hover">
+	</table>
+	
 	<script src="static/js/show_messages.js"></script>
 {% endblock %}
