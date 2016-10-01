@@ -80,14 +80,16 @@ a {
 	text-shadow: 1px 1px #ebebe0;
 }
 table {
-	width: 50% !important;
-    #border: 1px solid black;
+	width: 70% !important;
+#    border: 1px solid black;
 	padding: 2px;
+	vertical-align: middle;
 }
 
 th, td {
-	#border: 1px solid black;
+#	border: 1px solid black;
 	padding: 2px;
+	vertical-align: middle;
 }
 
 .tr-message {
@@ -99,19 +101,39 @@ th, td {
 }
 
 .level {
+	font-size: 14px;
 	width: 5% !important;
 	padding: 4px;
 }
 
 .timestamp {
-	width: 17% !important;
+	font-size: 14px;
+	width: 25% !important;
 	padding: 4px;
 }
 
 .message {
+	font-size: 14px;
 	padding: 4px;
 }
 td.PerformanceCell
 {
     width: 100px;
+	vertical-align: middle;
+}
+
+.td-search-1 {
+	width: 70%;
+	text-align: right;
+}
+
+.td-search-2 {
+	vertical-align: middle;
+	text-align: right;
+}
+
+form {
+	margin: 0;
+	margin-top: 4px;
+	margin-bottom: 4px;
 }

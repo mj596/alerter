@@ -18,20 +18,49 @@
 		}
 	}
 	
+	function filter() {
+		var value =$("#message_level_filter").val();
+		if( value.length ) {
+			var selector = $('.tr-message');
+			selector.each( function( ) {
+				var element = $(this).find("td.message").html();
+				if (element.indexOf(value) != -1) {	} else {
+					$(this).hide();
+				}
+			});
+		} else {
+			show_all();
+		}
+	}
+	
 	function show_all() {
 		var all = $('tr');
 		all.show();
 	}
 	
 	function discard() {
-		var selector = $('.tr-message:visible');
-		selector.each( function( ) {
+		if (confirm('Are you sure you want to discard these messages?')) {
+			var selector = $('.tr-message:visible');
+			selector.each( function( ) {
 			var identifier = $(this).attr( "id" );
 			socket.emit('delete', { "uuid": identifier } );
 			$(this).hide();
 		});
 		socket.emit('message');
+		} else {}
 	}
+	
+	function searchKeyPress(e)
+{
+    // look for window.event in case event isn't passed in
+    e = e || window.event;
+    if (e.keyCode == 13)
+    {
+		filter();
+        return false;
+    }
+    return true;
+}
 </script>
 {% endblock %}
 {% block content %}
@@ -80,8 +109,27 @@
 		</tr>
 	</table>
 	
+	<table align="center">
+		<tr style="height: 5px;">
+			<td class="td-search-1">
+				Search
+			</td>
+			<td width="2%"></td>
+			<td class="td-search-2">
+				<form>
+					<!--<input type="text" id="message_level_filter" name="message_level" size="30" onkeyUp="return searchKeyPress(event);" >-->
+					<input type="text" id="message_level_filter" name="message_level" size="30" onkeypress="return searchKeyPress(event);">
+				</form>
+			</td>
+			<!--<td>
+				<input id="message_level_filter_button" class="btn" type="button" value="Filter" onclick="filter();" style="width:100%">
+			</td>-->
+		<tr>
+	</table>
+	
 	<table id="log" align="center" class="table table-hover">
 	</table>
 	
 	<script src="static/js/show_messages.js"></script>
 {% endblock %}
+
