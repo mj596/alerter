@@ -4,8 +4,13 @@
 {{ super() }}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="static/js/socket.js"></script>
+{% if current_user.is_authenticated %}
+  {% if current_user.name == "admin" %}
+    <script src="static/js/hide.js"></script>
+    <script src="static/js/discard.js"></script>
+  {% endif %}
+{% endif %}
 <script src="static/js/update.js"></script>
-<script src="static/js/hide.js"></script>
 <script>
 	function show(type) {
 		var selector = $('.' + type + '-text').parent();
@@ -38,21 +43,8 @@
 		all.show();
 	}
 	
-	function discard() {
-		if (confirm('Are you sure you want to discard these messages?')) {
-			var selector = $('.tr-message:visible');
-			selector.each( function( ) {
-			var identifier = $(this).attr( "id" );
-			socket.emit('delete', { "uuid": identifier } );
-			$(this).hide();
-		});
-		socket.emit('message');
-		} else {}
-	}
-	
 	function searchKeyPress(e)
 {
-    // look for window.event in case event isn't passed in
     e = e || window.event;
     if (e.keyCode == 13)
     {
@@ -101,11 +93,15 @@
 					<input class="btn" type="button" value="Other" onclick="show('message');" style="width:100%">
 				</form>
 			</td>
-			<td>
-				<form>
-					<input class="btn" type="button" value="Discard" onclick="discard();" style="width:100%">
-				</form>
-			</td>
+            {% if current_user.is_authenticated %}
+                {% if current_user.name == "admin" %}
+                <td>
+                    <form>
+                        <input class="btn" type="button" value="Discard" onclick="discard();" style="width:100%">
+                    </form>
+                </td>
+                {% endif %}
+            {% endif %}
 		</tr>
 	</table>
 	

@@ -9,13 +9,27 @@
 	<link rel="stylesheet" href="static/css/alerter.css">
     {% endblock %}
   </head>
-  <body>
-    <div id="menu">
-      <a href="/index">Home</a>
-      <a href="/showData">show data</a>
-	  <a href="/getData">get data</a>
-	  <a href="/add?level=INFO&body=Przykladowy komunikat typu INFO">add sample data</a>
-    </div>
+  <body>  
+      {% if current_user.is_authenticated %}
+      <div id="info">
+        <p>Welcome <b>{{ current_user.name }}</b></p>
+      </div>
+      <div id="menu">
+        <a href="/index"><b>Home</b></a>
+        <a href="/showData">show data</a>
+	    <a href="/getData">get data</a>
+        {% if current_user.is_authenticated %}
+            {% if current_user.name == "admin" %}
+                <a href="/add?level=INFO&body=Przykladowy komunikat typu INFO&token=a5D5YS6tEds3H4fgb9ksQDt7128G3ETS">add sample data</a>
+            {% endif %}
+        {% endif %}
+        <a href="/logout"><b>Logout</b></a>
+      </div>
+      {% else %}
+      <div id="info">
+        <p>Welcome to<br><b>PrEDIction ALERTER</b><br>log in to continue</p>
+      </div>
+      {% endif %}
 	<hr>
     {% block content %}{% endblock %}
 	<hr>

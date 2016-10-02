@@ -1,5 +1,5 @@
 import uuid
-import modules.LocalDBConnector as LocalDBConnector
+import app.LocalDBConnector as LocalDBConnector
 import os
 
 class DbData():
@@ -29,6 +29,7 @@ class DbData():
     def add(self, level, timestamp, body):
         id = str(uuid.uuid1()).replace("-","")
         insert = "INSERT INTO " + self.table + " (uuid, level, timestamp, body, status) VALUES (\"" + id + "\",\"" + level + "\",\"" + timestamp + "\",\"" + body + "\",0);"
+        print(insert)
         self.db.execute( insert )
         self.db.commit()
         
